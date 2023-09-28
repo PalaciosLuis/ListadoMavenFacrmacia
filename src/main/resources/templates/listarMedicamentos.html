@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Listado de Medicamentos</title>
+
+	<!-- Agrega la referencia al CSS de Bootstrap -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="container mt-4">
+		<h1>Listado de Medicamentos</h1>
+
+		<!-- Agrega una tabla con estilos de Bootstrap -->
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nombre</th>
+					<th>Descripción</th>
+					<th>Categoría</th>
+					<th>Precio</th>
+					<th>Stock</th>
+					<th>Fecha de vencimiento</th>
+					<th>Proveedor</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Itera sobre la lista de medicamentos y muestra cada medicamento -->
+				<tr th:each="medicamento : ${medicamentos}">
+					<td th:text="${medicamento.idMedicamento}"></td>
+					<td th:text="${medicamento.nombre}"></td>
+					<td th:text="${medicamento.descripcion}"></td>
+					<td th:text="${medicamento.categoria}"></td>
+					<td th:text="${medicamento.precio}"></td>
+					<td th:text="${medicamento.stock}"></td>
+					<td th:text="${#dates.format(medicamento.fechaVencimiento, 'dd-MM-yyyy')}"></td>
+					<td th:text="${medicamento.proveedor}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
